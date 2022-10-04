@@ -41,16 +41,16 @@ self.addEventListener('fetch', event => {
     console.log('SW', event.request.url);
 
     if (event.request.url.includes('https://reqres.in')) {
-        const resp = new Response(`{  ok:false, mensaje: 'jajaja' }`)
+        const resp = new Response(`{  ok:false, mensaje: 'ups' }`)
         event.respondWith(resp);
     }
 });
 
 // if (event.request.url.includes('https://reqres.in')) {
-    //     const resp = new Response(`{  ok:false, mensaje: 'jajaja' }`)
+    //     const resp = new Response(`{  ok:false, mensaje: 'ups' }`)
     //     event.respondWith(resp);
     // }
-});
+
 
 //SYNC: Recuperamos la informacion de internet
 
@@ -60,3 +60,8 @@ self.addEventListener('sync', event => {
     console.log(event.tag);
 
 });
+
+self.addEventListener('push', event =>{
+
+    console.log(event);
+})
