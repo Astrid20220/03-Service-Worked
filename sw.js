@@ -31,3 +31,32 @@ self.addEventListener('activate', event => {
 
     
 });
+
+//FETCH: Manejo de peticiones HTTP
+
+self.addEventListener('fetch', event => {
+
+    //Aplicar estrateguas del cache
+
+    console.log('SW', event.request.url);
+
+    if (event.request.url.includes('https://reqres.in')) {
+        const resp = new Response(`{  ok:false, mensaje: 'jajaja' }`)
+        event.respondWith(resp);
+    }
+});
+
+// if (event.request.url.includes('https://reqres.in')) {
+    //     const resp = new Response(`{  ok:false, mensaje: 'jajaja' }`)
+    //     event.respondWith(resp);
+    // }
+});
+
+//SYNC: Recuperamos la informacion de internet
+
+self.addEventListener('sync', event => {
+    console.log('Tenemos conexion');
+    console.log(event);
+    console.log(event.tag);
+
+});
